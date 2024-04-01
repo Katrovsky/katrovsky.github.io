@@ -1,0 +1,5 @@
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Katrovsky/katrovsky.github.io/mkdocs_deploy.yml)
+![GitHub repo size](https://img.shields.io/github/repo-size/Katrovsky/katrovsky.github.io)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Katrovsky/katrovsky.github.io)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Katrovsky/katrovsky.github.io/gh-pages?style=flat)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fkatrovsky.github.io%2F&label=katrovsky.github.io)
