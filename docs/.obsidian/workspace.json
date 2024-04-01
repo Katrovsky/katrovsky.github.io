@@ -15,7 +15,7 @@
               "state": {
                 "file": "index.md",
                 "mode": "source",
-                "source": false
+                "source": true
               }
             }
           }
@@ -148,6 +148,9 @@
   },
   "active": "818de2dee1befd36",
   "lastOpenFiles": [
-    "about.md"
+    "contact.md",
+    "about.md",
+    "index.md",
+    "+7.md"
   ]
 }
