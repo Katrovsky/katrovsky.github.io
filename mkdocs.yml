@@ -4,6 +4,9 @@ site_description: Вики для курьеров СберМаркета.
 site_author: Кирилл Катровский
 nav:
   - Главная: index.md
+  - Shopper:
+    - Установка: shopper/index.md
+    - Интерфейс: shopper/interface.md
   - О сайте: about.md
   - Контакты: contact.md
 
@@ -51,13 +54,17 @@ copyright: Copyright &copy; 2024 Kirill K.
 extra:
   generator: false
 
-# plugins:
-#   - info
-#   - social:
-#       enabled: true
-#       cards: true
+plugins:
+ - info
+ - social:
+     enabled: true
+     cards: true
 
 markdown_extensions:
+  - attr_list
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
