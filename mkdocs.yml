@@ -56,9 +56,9 @@ extra:
 
 plugins:
  - info
- - social:
-     enabled: true
-     cards: true
+# - social:
+#     enabled: true
+#     cards: true
 
 markdown_extensions:
   - attr_list
