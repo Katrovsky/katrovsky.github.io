@@ -54,8 +54,8 @@ copyright: Copyright &copy; 2024 Kirill K.
 extra:
   generator: false
 
-plugins:
- - info
+#plugins:
+# - info
 # - social:
 #     enabled: true
 #     cards: true
