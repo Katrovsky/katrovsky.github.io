@@ -56,7 +56,7 @@ extra:
   generator: false
 
 plugins:
- - info
+# - info
  - glightbox:
        touchNavigation: true
        loop: false
