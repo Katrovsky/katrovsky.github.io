@@ -9,16 +9,21 @@
 
 ---
 ## Сайты
+
+[Личный кабинет партнёра](https://partner.sbermarket-mobile.ru/)
+
+[ДОГОВОР ОФЕРТЫ](Offer.pdf)
+
+[СберЧаевые](https://lk.mysbertips.ru/)
+
 [Программа привилегий для сборщиков и курьеров СберМаркета](https://partnersbenefits.sbermarket.ru/)
 !!! tip "Примечание"
     Некоторые страницы сайта являются устаревшими:
 
-    [пример 1](https://partnersbenefits.sbermarket.ru/geekbrains) -- промокод двухлетней давности,
+    [пример 1](https://partnersbenefits.sbermarket.ru/geekbrains) — промокод двухлетней давности,
 
-    [пример 2](https://partnersbenefits.sbermarket.ru/minako) -- ссылка для получения промокода ведёт к неактуальному боту,
+    [пример 2](https://partnersbenefits.sbermarket.ru/minako) — ссылка для получения промокода ведёт к неактуальному боту,
 
-    [пример 3](https://partner-sbermarket.tilda.ws/forward) -- то же, что в предыдущем пункте + указанный сайт изменил адрес и название. Возможно, домен использует другая фирма, на обращения по почте владельцы не отвечают.
-
-[СберЧаевые](https://lk.mysbertips.ru/)
+    [пример 3](https://partner-sbermarket.tilda.ws/forward) — то же, что в предыдущем пункте + указанный сайт изменил адрес и название. Возможно, домен использует другая фирма, на обращения по почте владельцы не отвечают.
 
 ---

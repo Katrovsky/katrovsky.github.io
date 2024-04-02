@@ -13,6 +13,7 @@ nav:
 theme:
   name: material
   icon:
+    favicon: images/bike-fast_64.png
     logo: material/bike-fast
   language: ru
   features:
