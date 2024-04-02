@@ -55,8 +55,21 @@ copyright: Copyright &copy; 2024 Kirill K.
 extra:
   generator: false
 
-#plugins:
-# - info
+plugins:
+ - info
+ - glightbox:
+       touchNavigation: true
+       loop: false
+       effect: zoom
+       slide_effect: slide
+       width: 100%
+       height: auto
+       zoomable: true
+       draggable: true
+       auto_caption: false
+       caption_position: bottom
+       background: white
+       shadow: true
 # - social:
 #     enabled: true
 #     cards: true
@@ -67,5 +80,6 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - def_list
+  - md_in_html
   - pymdownx.tasklist:
       custom_checkbox: true
