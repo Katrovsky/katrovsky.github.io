@@ -6,6 +6,7 @@ nav:
   - Главная: index.md
   - Своими словами:
     - Взаимоотношения: more/relationships.md
+    - Акции: more/promotions.md
   - Shopper:
     - Установка: shopper/index.md
     - Интерфейс: shopper/interface.md
@@ -15,22 +16,35 @@ nav:
 theme:
   name: material
   icon:
-    favicon: images/bike-fast_64.png
+    favicon: images/favicon.png
     logo: material/bike-fast
+    admonition:
+      note: fontawesome/solid/note-sticky
+      abstract: fontawesome/solid/book
+      info: fontawesome/solid/circle-info
+      tip: fontawesome/solid/bullhorn
+      success: fontawesome/solid/check
+      question: fontawesome/solid/circle-question
+      warning: fontawesome/solid/triangle-exclamation
+      failure: fontawesome/solid/bomb
+      danger: fontawesome/solid/skull
+      bug: fontawesome/solid/robot
+      example: fontawesome/solid/flask
+      quote: fontawesome/solid/quote-left
   language: ru
   features:
    - search.suggest
    - navigation.instant
    - navigation.instant.prefetch
-    - navigation.instant.progress
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.sections
-    - navigation.expand
-    - navigation.path
-    - navigation.prune
-    - navigation.top
-  
+   - navigation.instant.progress
+#  - navigation.tabs
+#  - navigation.tabs.sticky
+#  - navigation.sections
+   - navigation.expand
+   - navigation.path
+   - navigation.prune
+   - navigation.top
+   - content.tooltips
 
   palette:
 
@@ -60,10 +74,9 @@ extra:
 
 plugins:
  - search
-# - info
  - glightbox:
        touchNavigation: true
-       loop: false
+       loop: true
        effect: zoom
        slide_effect: slide
        width: 100%
@@ -74,16 +87,20 @@ plugins:
        caption_position: bottom
        background: white
        shadow: true
-# - social:
-#     enabled: true
-#     cards: true
+ - social
+#       enabled: !ENV [CI, false]
 
 markdown_extensions:
-  - attr_list
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
   - admonition
   - pymdownx.details
   - pymdownx.superfences
   - def_list
+  - attr_list
   - md_in_html
   - pymdownx.tasklist:
       custom_checkbox: true
