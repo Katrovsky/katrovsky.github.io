@@ -7,8 +7,8 @@ nav:
   - Shopper:
     - Установка: shopper/index.md
     - Интерфейс: shopper/interface.md
-  - О сайте: about.md
   - Контакты: contact.md
+  - О сайте: about.md
 
 theme:
   name: material
