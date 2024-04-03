@@ -17,6 +17,7 @@ theme:
     logo: material/bike-fast
   language: ru
   features:
+   - search.suggest
    - navigation.instant
    - navigation.instant.prefetch
     - navigation.instant.progress
@@ -56,6 +57,7 @@ extra:
   generator: false
 
 plugins:
+ - search
 # - info
  - glightbox:
        touchNavigation: true
