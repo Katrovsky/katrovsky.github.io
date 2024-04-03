@@ -4,6 +4,8 @@ site_description: Вики для курьеров СберМаркета.
 site_author: Кирилл Катровский
 nav:
   - Главная: index.md
+  - Своими словами:
+    - Взаимоотношения: more/relationships.md
   - Shopper:
     - Установка: shopper/index.md
     - Интерфейс: shopper/interface.md
