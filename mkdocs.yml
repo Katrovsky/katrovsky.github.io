@@ -75,9 +75,10 @@ extra:
   generator: false
 
 plugins:
- - search
- - social
- - glightbox:
+  - search
+  - social:
+      enabled: !ENV [CI, false]
+  - glightbox:
       touchNavigation: true
       loop: true
       effect: fade
@@ -90,7 +91,7 @@ plugins:
       caption_position: bottom
       background: Gainsboro
       shadow: true
- - git-revision-date-localized:
+  - git-revision-date-localized:
       locale: ru
 
 markdown_extensions:
