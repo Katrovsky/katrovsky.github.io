@@ -14,7 +14,9 @@ nav:
   - О сайте: about.md
 
 theme:
+  language: ru
   name: material
+  custom_dir: docs/overrides
   icon:
     favicon: images/favicon.png
     logo: material/bike-fast
@@ -31,7 +33,6 @@ theme:
       bug: fontawesome/solid/robot
       example: fontawesome/solid/flask
       quote: fontawesome/solid/quote-left
-  language: ru
   features:
    - search.suggest
    - navigation.instant
@@ -45,6 +46,7 @@ theme:
 #  - navigation.prune
    - navigation.top
    - content.tooltips
+
 
   palette:
 
@@ -74,35 +76,35 @@ extra:
 
 plugins:
  - search
- - glightbox:
-       touchNavigation: true
-       loop: true
-       effect: fade
-       slide_effect: fade
-       width: 100%
-       height: auto
-       zoomable: true
-       draggable: true
-       auto_caption: false
-       caption_position: bottom
-       background: Gainsboro
-       shadow: true
  - social
+ - glightbox:
+      touchNavigation: true
+      loop: true
+      effect: fade
+      slide_effect: fade
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+      auto_caption: false
+      caption_position: bottom
+      background: Gainsboro
+      shadow: true
  - git-revision-date-localized:
-    locale: ru
+      locale: ru
 
 markdown_extensions:
-  - meta
-  - pymdownx.critic
-  - pymdownx.caret
-  - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.tilde
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - def_list
-  - attr_list
-  - md_in_html
-  - pymdownx.tasklist:
-      custom_checkbox: true
+ - meta
+ - pymdownx.critic
+ - pymdownx.caret
+ - pymdownx.keys
+ - pymdownx.mark
+ - pymdownx.tilde
+ - admonition
+ - pymdownx.details
+ - pymdownx.superfences
+ - def_list
+ - attr_list
+ - md_in_html
+ - pymdownx.tasklist:
+     custom_checkbox: true

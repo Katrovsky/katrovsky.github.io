@@ -17,4 +17,3 @@
 
 
 2. Для iOS можно скачать [из AppStore здесь](https://apps.apple.com/ru/app/shopper-app/id6467191758).
-
