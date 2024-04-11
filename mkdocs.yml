@@ -2,6 +2,7 @@ site_name: Stranded
 site_url: https://katrovsky.github.io
 site_description: Вики для курьеров СберМаркета.
 site_author: Кирилл Катровский
+#repo_url: https://katrovsky.github.io
 nav:
   - Главная: index.md
   - Своими словами:
@@ -46,6 +47,7 @@ theme:
    - navigation.indexes
    - content.tooltips
    - toc.follow
+   - navigation.footer
 
 
   palette:
@@ -71,8 +73,6 @@ theme:
         name: Цветовая схема устройства
 
 copyright: Copyright &copy; 2024 Kirill K.
-extra:
-  generator: false
 
 plugins:
   - search
@@ -109,3 +109,18 @@ markdown_extensions:
  - md_in_html
  - pymdownx.tasklist:
      custom_checkbox: true
+
+
+extra:
+# alternate:
+#   - name: Русский
+#     link: /ru/
+#     lang: ru
+#   - name: English
+#     link: /en/ 
+#     lang: en
+  generator: false
+  social:
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/+7q1_UEHSOxk0N2Ri
+      name: Федеральный чат Сбермаркета
