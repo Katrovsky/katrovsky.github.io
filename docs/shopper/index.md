@@ -7,7 +7,7 @@
 	<div class="grid cards" markdown>
 
 	- [Google Play](https://play.google.com/store/apps/details?id=ru.sbmt.shopper)
-	- Установка **`apk`** — можно скачать [здесь](https://storage.yandexcloud.net/sbermarker-shopper-distribution/105/shopper-105.0.1.apk)
+	- Установка **`apk`** — можно скачать [здесь](https://storage.yandexcloud.net/sbermarker-shopper-distribution/106/shopper-106.0.0.apk)
 	
 	</div>
 

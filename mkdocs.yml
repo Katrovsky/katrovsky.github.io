@@ -89,6 +89,7 @@ plugins:
        shadow: true
  - social:
        enabled: !ENV [CI, false]
+ - git-revision-date-localized
 
 markdown_extensions:
   - pymdownx.critic
