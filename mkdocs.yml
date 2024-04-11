@@ -87,11 +87,12 @@ plugins:
        caption_position: bottom
        background: Gainsboro
        shadow: true
- - social:
-       enabled: !ENV [CI, false]
- - git-revision-date-localized
+ - social
+ - git-revision-date-localized:
+    locale: ru
 
 markdown_extensions:
+  - meta
   - pymdownx.critic
   - pymdownx.caret
   - pymdownx.keys
