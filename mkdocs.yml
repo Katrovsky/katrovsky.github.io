@@ -120,7 +120,7 @@ extra:
 #     link: /en/ 
 #     lang: en
   generator: false
-  social:
-    - icon: fontawesome/brands/telegram
-      link: https://t.me/+7q1_UEHSOxk0N2Ri
-      name: Федеральный чат Сбермаркета
+# social:
+#   - icon: fontawesome/brands/telegram
+#     link: https://t.me/+7q1_UEHSOxk0N2Ri
+#     name: Федеральный чат Сбермаркета
