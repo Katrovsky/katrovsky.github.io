@@ -2,7 +2,7 @@ name: Update APK
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 * * * *'  # Ежечасно
   workflow_dispatch:
 
 jobs:
@@ -51,3 +51,6 @@ jobs:
         git add docs/shopper/${{ steps.get_release.outputs.apk_name }} docs/shopper/index.md
         git commit -m "Update Shopper APK to release ${{ steps.get_release.outputs.tag_name }}"
         git push
+
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT }}
