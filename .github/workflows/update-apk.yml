@@ -1,0 +1,53 @@
+name: Update APK
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  check-and-update-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v2
+
+    - name: Get latest release info
+      id: get_release
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const latestRelease = await github.rest.repos.getLatestRelease({
+            owner: 'Katrovsky',
+            repo: 'ShopperPopper'
+          });
+          const apkAsset = latestRelease.data.assets.find(asset => asset.name.startsWith('Shopper_'));
+          core.setOutput('tag_name', latestRelease.data.tag_name);
+          core.setOutput('apk_url', apkAsset.browser_download_url);
+          core.setOutput('apk_name', apkAsset.name);
+
+    - name: Check if the release is already downloaded
+      id: check_release
+      run: |
+        if grep -q "${{ steps.get_release.outputs.apk_name }}" docs/shopper/index.md; then
+          echo "The release is already present."
+          exit 0
+        fi
+
+    - name: Download the latest APK
+      run: |
+        wget -O docs/shopper/${{ steps.get_release.outputs.apk_name }} ${{ steps.get_release.outputs.apk_url }}
+
+    - name: Update the release link in documentation
+      run: |
+        sed -i "s|Shopper_.*.apk|${{ steps.get_release.outputs.apk_name }}|g" docs/shopper/index.md
+        echo "Updated the release link to ${{ steps.get_release.outputs.apk_name }}"
+
+    - name: Commit changes
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add docs/shopper/${{ steps.get_release.outputs.apk_name }} docs/shopper/index.md
+        git commit -m "Update Shopper APK to release ${{ steps.get_release.outputs.tag_name }}"
+        git push
