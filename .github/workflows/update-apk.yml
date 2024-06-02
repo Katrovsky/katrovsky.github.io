@@ -32,19 +32,24 @@ jobs:
       run: |
         if grep -q "${{ steps.get_release.outputs.apk_name }}" docs/shopper/index.md; then
           echo "The release is already present."
-          exit 0
+          echo "release_exists=true" >> $GITHUB_ENV
+        else
+          echo "release_exists=false" >> $GITHUB_ENV
         fi
 
     - name: Download the latest APK
+      if: env.release_exists == 'false'
       run: |
         wget -O docs/shopper/${{ steps.get_release.outputs.apk_name }} ${{ steps.get_release.outputs.apk_url }}
 
     - name: Update the release link in documentation
+      if: env.release_exists == 'false'
       run: |
-        sed -i "s|(\(Shopper_.*.apk\))|(${{ steps.get_release.outputs.apk_name }})|g" docs/shopper/index.md
+        sed -i "s|(Shopper_.*.apk)|(${{ steps.get_release.outputs.apk_name }})|g" docs/shopper/index.md
         echo "Updated the release link to ${{ steps.get_release.outputs.apk_name }}"
 
     - name: Commit changes
+      if: env.release_exists == 'false'
       env:
         GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT }}
       run: |
@@ -55,7 +60,7 @@ jobs:
         git push https://github-actions:${{ secrets.ACTIONS_PAT }}@github.com/Katrovsky/katrovsky.github.io.git main
 
     - name: Trigger mkdocs_deploy workflow
-      if: success()
+      if: env.release_exists == 'false'
       run: |
         curl -X POST \
           -H "Accept: application/vnd.github.v3+json" \
