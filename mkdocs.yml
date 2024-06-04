@@ -5,6 +5,7 @@ site_author: Кирилл Катровский
 #repo_url: https://katrovsky.github.io
 nav:
   - Главная: index.md
+  - ЧаВо: faq.md
   - Своими словами:
     - Взаимоотношения: more/relationships.md
     - Акции: more/promotions.md
