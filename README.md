@@ -16,15 +16,15 @@
 ## Cloning the Repository
 
 To get started, clone this repository using the following command:
-```
-git clone https://github.com/Katrovsky/katrovsky.github.io.git
+```bash
+git clone https://github.com/Katrovsky/katrovsky.github.io.git & cd katrovsky.github.io
 ```
 
 ## Setting up the Environment
 
 Next, create a virtual environment for Python using the following commands:
 
-```
+```python
 python -m venv .env
 source env/bin/activate  # On Windows, use `.env\Scripts\activate` instead
 ```
@@ -35,7 +35,7 @@ This will activate the virtual environment. You can verify this by seeing the na
 
 Once you're in the virtual environment, install the required modules using pip:
 
-```
+```python
 pip install -r requirements.txt
 ```
 
@@ -45,10 +45,15 @@ This will install all the dependencies specified in the `requirements.txt` file.
 
 Finally, to run the MkDocs server, use the following command:
 
-```
+```bash
 mkdocs serve
 ```
 
 This will start a development server that you can access by navigating to <http://localhost:8000> in your web browser. You should see the website up and running!
+
+All-In-One:
+```bash
+git clone https://github.com/Katrovsky/katrovsky.github.io.git && cd katrovsky.github.io && python -m venv .env && source env/bin/activate && pip install -r requirements.txt && mkdocs serve
+```
 
 That's it! You're now ready to work with repository.
