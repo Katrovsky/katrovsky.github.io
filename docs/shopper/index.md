@@ -9,7 +9,7 @@
 	- [Google Play](https://play.google.com/store/apps/details?id=ru.sbmt.shopper)
 	- [RuStore](https://www.rustore.ru/catalog/app/ru.sbmt.shopper)
 	- [Huawei AppGallery](https://appgallery.huawei.com/#/app/C110698749)
-	- Установка **`apk`** — можно скачать [здесь](Shopper_112.0.1.apk)
+	- Установка **`apk`** — можно скачать [здесь](Shopper_112.0.2.apk)
 	
 	</div>
 
