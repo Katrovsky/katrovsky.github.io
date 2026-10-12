@@ -1,6 +1,6 @@
 baseURL = 'https://katrovsky.github.io/'
 languageCode = 'ru-ru'
-title = 'katrovsky'
+title = 'tail -f /dev/brain'
 theme = 'PaperMod'
 
 [outputs]
@@ -9,7 +9,8 @@ theme = 'PaperMod'
 [params]
   defaultTheme = 'auto'
   ShowReadingTime = true
-  ShowShareButtons = false
+  ShowShareButtons = true
+  ShareButtons = ["telegram"]
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
