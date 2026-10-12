@@ -17,6 +17,7 @@ theme = 'PaperMod'
   ShowCodeCopyButtons = true
   ShowToc = true
   TocOpen = false
+  removePathAccents = true
 
 [params.cover]
   responsiveImages = true
