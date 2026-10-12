@@ -1,6 +1,11 @@
 {
   "taxonomy": {
-    "categories": [],
-    "tags": []
+    "categories": [
+      "OBS Studio"
+    ],
+    "tags": [
+      "streaming",
+      "video"
+    ]
   }
 }
