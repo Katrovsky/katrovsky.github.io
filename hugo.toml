@@ -3,19 +3,44 @@ languageCode = 'ru-ru'
 title = 'katrovsky'
 theme = 'PaperMod'
 
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
 [params]
   defaultTheme = 'auto'
   ShowReadingTime = true
-  ShowShareButtons = true
+  ShowShareButtons = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
-  [params.homeInfoParams]
+  ShowToc = true
+  TocOpen = false
+
+[params.cover]
+  responsiveImages = true
+  linkFullImages = true
+
+[params.homeInfoParams]
   Title = "Привет! 👋"
   Content = "Заметки, технические статьи и личные проекты."
-  [[params.socialIcons]]
+
+[[params.socialIcons]]
   name = "twitch"
   url = "https://twitch.tv/katrovsky"
-  [[params.socialIcons]]
+
+[[params.socialIcons]]
   name = "telegram"
   url = "https://t.me/katrovsky"
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Статьи"
+    url = "/posts/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "search"
+    name = "Поиск"
+    url = "/search/"
+    weight = 20
