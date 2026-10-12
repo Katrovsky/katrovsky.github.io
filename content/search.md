@@ -2,5 +2,5 @@
 title: "Поиск"
 layout: "search"
 summary: "search"
-placeholder: "Поиск..."
+placeholder: "Начните вводить текст..."
 ---
