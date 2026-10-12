@@ -1,0 +1,12 @@
+baseURL = 'https://katrovsky.github.io/'
+languageCode = 'ru-ru'
+title = 'katrovsky'
+theme = 'PaperMod'
+
+[params]
+  defaultTheme = 'auto'
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
