@@ -40,7 +40,11 @@ theme = 'PaperMod'
     name = "Статьи"
     url = "/posts/"
     weight = 10
-
+  [[menu.main]]
+    identifier = "categories"
+    name = "Категории"
+    url = "/categories/"
+    weight = 15
   [[menu.main]]
     identifier = "search"
     name = "Поиск"
