@@ -1,0 +1,38 @@
+media:
+  input: content/posts
+  output: content/posts
+
+content:
+  - name: posts
+    label: Статьи
+    type: collection
+    path: content/posts
+    filename: "{fields.slug}/index.md"
+    fields:
+      - name: title
+        label: Заголовок
+        type: string
+        required: true
+
+      - name: slug
+        label: Папка статьи (slug)
+        type: string
+        required: true
+
+      - name: date
+        label: Дата публикации
+        type: date
+        required: true
+
+      - name: draft
+        label: Черновик
+        type: boolean
+        default: false
+
+      - name: description
+        label: Краткое описание
+        type: text
+
+      - name: body
+        label: Текст статьи
+        type: rich-text
