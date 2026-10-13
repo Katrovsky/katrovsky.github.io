@@ -9,6 +9,7 @@ tags:
     - video
     - streaming
 description: Тезисное описание многодорожечного декодирования
+weight: 10
 ---
 
 ## Контекст Twitch Enhanced Broadcasting: предпосылки и прикладные задачи

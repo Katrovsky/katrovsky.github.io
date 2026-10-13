@@ -10,6 +10,7 @@ tags:
 categories:
   - OBS Studio
 slug: kodirovanie
+weight: 20
 ---
 # Кодирование
 
