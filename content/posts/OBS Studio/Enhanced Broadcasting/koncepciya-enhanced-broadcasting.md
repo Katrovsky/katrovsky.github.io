@@ -2,7 +2,7 @@
 date: 2026-10-13T18:24:24.402Z
 title: Концепция Enhanced Broadcasting
 draft: false
-slug: concept
+slug: koncepciya-enhanced-broadcasting
 categories:
     - OBS Studio
 tags:
