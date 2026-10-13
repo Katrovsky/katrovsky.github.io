@@ -57,9 +57,6 @@
     {
       "title": "text",
       "path": "[[workspace]]/content/posts/text"
-    },
-    {
-      "path": "[[workspace]]/content/posts/OBS Studio/Принцип работы"
     }
   ],
   "frontMatter.git.enabled": true

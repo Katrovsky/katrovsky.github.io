@@ -1,8 +1,14 @@
 baseURL = 'https://katrovsky.github.io/'
-languageCode = 'ru-ru'
 defaultContentLanguage = 'ru'
 title = 'tail -f /dev/brain'
 theme = 'PaperMod'
+
+[languages]
+  [languages.ru]
+    languageName = "Русский"
+    languageCode = "ru-ru"
+    weight = 1
+    title = 'tail -f /dev/brain'
 
 [outputs]
   home = ['HTML', 'RSS', 'JSON']
