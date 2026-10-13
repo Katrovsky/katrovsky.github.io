@@ -1,0 +1,7 @@
+<a class="section-card" href="{{ .RelPermalink }}">
+    <span class="section-card-title">{{ .LinkTitle }}</span>
+    {{- with .Description }}
+    <span class="section-card-desc">{{ . }}</span>
+    {{- end }}
+    <span class="section-card-meta">статей: {{ len .RegularPagesRecursive }}</span>
+</a>

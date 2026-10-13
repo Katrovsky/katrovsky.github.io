@@ -1,59 +1,88 @@
 baseURL = 'https://katrovsky.github.io/'
-defaultContentLanguage = 'ru'
 title = 'tail -f /dev/brain'
 theme = 'PaperMod'
+defaultContentLanguage = 'ru'
+languageCode = 'ru-ru'
+enableGitInfo = true
+enableRobotsTXT = true
+removePathAccents = true
 
-[languages]
-  [languages.ru]
-    languageName = "Русский"
-    languageCode = "ru-ru"
-    weight = 1
-    title = 'tail -f /dev/brain'
+[pagination]
+  pagerSize = 20
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
 
 [outputs]
   home = ['HTML', 'RSS', 'JSON']
 
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    tabWidth = 4
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
+
 [params]
+  description = 'Заметки, технические статьи и личные проекты'
+  images = ['og-image.png']
   defaultTheme = 'auto'
+  mainSections = ['posts']
   ShowReadingTime = true
+  ShowWordCount = false
   ShowShareButtons = true
-  ShareButtons = ["telegram"]
+  ShareButtons = ['telegram']
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
   ShowToc = true
-  TocOpen = false
-  removePathAccents = true
-
-[params.cover]
-  responsiveImages = true
-  linkFullImages = true
+  TocOpen = true
+  UseHugoToc = true
+  ShowRssButtonInSectionTermList = true
+  disableSpecial1stPost = true
 
 [params.homeInfoParams]
-  Title = "Привет! 👋"
-  Content = "Заметки, технические статьи и личные проекты."
+  Title = 'Привет! 👋'
+  Content = 'Заметки, технические статьи и личные проекты.'
 
 [[params.socialIcons]]
-  name = "twitch"
-  url = "https://twitch.tv/katrovsky"
+  name = 'twitch'
+  url = 'https://twitch.tv/katrovsky'
 
 [[params.socialIcons]]
-  name = "telegram"
-  url = "https://t.me/katrovsky"
+  name = 'telegram'
+  url = 'https://t.me/katrovsky'
+
+[params.fuseOpts]
+  isCaseSensitive = false
+  shouldSort = true
+  location = 0
+  distance = 1000
+  threshold = 0.3
+  minMatchCharLength = 2
+  keys = ['title', 'permalink', 'summary', 'content']
 
 [menu]
   [[menu.main]]
-    identifier = "posts"
-    name = "Статьи"
-    url = "/posts/"
+    identifier = 'posts'
+    name = 'Статьи'
+    url = '/posts/'
     weight = 10
   [[menu.main]]
-    identifier = "categories"
-    name = "Категории"
-    url = "/categories/"
+    identifier = 'categories'
+    name = 'Категории'
+    url = '/categories/'
     weight = 15
   [[menu.main]]
-    identifier = "search"
-    name = "Поиск"
-    url = "/search/"
+    identifier = 'search'
+    name = 'Поиск'
+    url = '/search/'
     weight = 20

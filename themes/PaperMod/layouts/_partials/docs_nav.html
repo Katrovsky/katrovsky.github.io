@@ -1,0 +1,37 @@
+{{- $section := .section }}
+{{- $current := .current }}
+{{- if .root }}
+<nav class="docs-nav" aria-label="Навигация по разделам">
+    <div class="docs-nav-inner">
+        <details class="docs-nav-all">
+            <summary>Разделы</summary>
+            {{- partial "docs_nav.html" (dict "section" $section "current" $current "root" false) }}
+        </details>
+    </div>
+    <script>
+        (function () {
+            var d = document.querySelector('.docs-nav-all');
+            var m = window.matchMedia('(min-width: 1280px)');
+            function sync() { if (m.matches) { d.open = true; } }
+            sync();
+            m.addEventListener('change', sync);
+        })();
+    </script>
+</nav>
+{{- else }}
+<ul>
+    {{- range $section.RegularPages.ByWeight }}
+    <li><a href="{{ .RelPermalink }}" {{ if .Eq $current }} class="active" aria-current="page" {{ end }}>{{ .LinkTitle
+            }}</a></li>
+    {{- end }}
+    {{- range $section.Sections.ByWeight }}
+    {{- $open := or (.Eq $current) ($current.IsDescendant .) }}
+    <li>
+        <details{{ if $open }} open{{ end }}>
+            <summary><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></summary>
+            {{- partial "docs_nav.html" (dict "section" . "current" $current "root" false) }}
+            </details>
+    </li>
+    {{- end }}
+</ul>
+{{- end }}
