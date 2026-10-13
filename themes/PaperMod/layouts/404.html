@@ -1,3 +1,24 @@
 {{- define "main" }}
-<div class="not-found">404</div>
+<section class="nf">
+    <div class="nf-code">404</div>
+    <h1 class="nf-title">Страница не найдена</h1>
+    <p class="nf-text">Возможно, статья переехала или ссылка введена с ошибкой. Попробуйте поиск или загляните в
+        разделы.</p>
+    <form class="nf-search" action="{{ " search/" | relLangURL }}" method="get" role="search">
+        <input type="search" name="q" placeholder="Поиск по статьям" aria-label="Поиск по статьям" autocomplete="off"
+            maxlength="64">
+        <button type="submit">Найти</button>
+    </form>
+    <a class="nf-home" href="{{ "" | relLangURL }}">← На главную</a>
+    {{- with site.GetPage "/posts" }}
+    {{- with .Sections.ByWeight }}
+    <h2 class="list-heading">Разделы</h2>
+    <div class="card-grid">
+        {{- range . }}
+        {{- partial "section_card.html" . }}
+        {{- end }}
+    </div>
+    {{- end }}
+    {{- end }}
+</section>
 {{- end }}{{/* end main */ -}}

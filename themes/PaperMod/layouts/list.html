@@ -60,9 +60,9 @@
 
 {{- $pages := .RegularPages }}
 {{- if .IsHome }}
-{{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
-{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true" }}
-{{- $pages = first 8 $pages.ByDate.Reverse }}
+{{- with site.GetPage "/posts" }}
+{{- $pages = first 8 .RegularPagesRecursive.ByDate.Reverse }}
+{{- end }}
 {{- else if eq .Kind "section" }}
 {{- $pages = .RegularPages.ByWeight }}
 {{- else }}
@@ -76,11 +76,39 @@
 <h2 class="list-heading">Статьи</h2>
 {{- end }}
 
-{{- $paginator := .Paginate $pages }}
-{{- range $paginator.Pages }}
-{{- partial "doc_entry.html" . }}
+{{- $items := $pages }}
+{{- $paginator := "" }}
+{{- if not .IsHome }}
+{{- $paginator = .Paginate $pages }}
+{{- $items = $paginator.Pages }}
 {{- end }}
 
+{{- range $items }}
+<article class="post-entry">
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+      {{- .Title }}
+      {{- if .Draft }}
+      <span class="entry-hint" title="Draft">черновик</span>
+      {{- end }}
+    </h2>
+  </header>
+  {{- if (ne (.Param "hideSummary") true) }}
+  <div class="entry-content">
+    <p>{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}{{
+      end }}</p>
+  </div>
+  {{- end }}
+  {{- if not (.Param "hideMeta") }}
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . -}}
+  </footer>
+  {{- end }}
+  <a class="entry-link" aria-label="{{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{- end }}
+
+{{- if $paginator }}
 {{- if gt $paginator.TotalPages 1 }}
 <footer class="page-footer">
   <nav class="pagination">
@@ -102,6 +130,7 @@
     {{- end }}
   </nav>
 </footer>
+{{- end }}
 {{- end }}
 {{- end }}
 

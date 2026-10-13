@@ -3,11 +3,14 @@ import * as params from '@params';
 const resList = document.getElementById('searchResults');
 const sInput = document.getElementById('searchInput');
 const searchBox = document.getElementById('searchbox');
+const statusEl = document.getElementById('searchStatus');
 
 let fuse;
 let currentElement = null;
 let firstResult = null;
 let lastResult = null;
+
+const hint = 'Введите запрос, чтобы найти статью';
 
 const defaultFuseOptions = {
     distance: 100,
@@ -44,12 +47,77 @@ const debounce = (fn, delay) => {
     };
 };
 
+const setStatus = (text) => {
+    if (statusEl) {
+        statusEl.textContent = text;
+    }
+};
+
+const syncUrl = (query) => {
+    const url = new URL(window.location.href);
+    if (query) {
+        url.searchParams.set('q', query);
+    } else {
+        url.searchParams.delete('q');
+    }
+    window.history.replaceState(null, '', url);
+};
+
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const getTerms = (query) => query.split(/\s+/).filter((term) => term.length > 1);
+
+const appendHighlighted = (parent, text, pattern) => {
+    if (!pattern) {
+        parent.appendChild(document.createTextNode(text));
+        return;
+    }
+
+    text.split(pattern).forEach((part, index) => {
+        if (!part) {
+            return;
+        }
+
+        if (index % 2 === 1) {
+            const mark = document.createElement('mark');
+            mark.textContent = part;
+            parent.appendChild(mark);
+        } else {
+            parent.appendChild(document.createTextNode(part));
+        }
+    });
+};
+
+const buildSnippet = (item, terms) => {
+    const content = (item.content || '').replace(/\s+/g, ' ').trim();
+    const lower = content.toLowerCase();
+    let index = -1;
+
+    for (const term of terms) {
+        const found = lower.indexOf(term.toLowerCase());
+        if (found !== -1 && (index === -1 || found < index)) {
+            index = found;
+        }
+    }
+
+    if (index === -1) {
+        const fallback = (item.description || item.summary || content).trim();
+        return fallback.length > 160 ? `${fallback.slice(0, 160).trimEnd()}…` : fallback;
+    }
+
+    const start = Math.max(0, index - 60);
+    const end = Math.min(content.length, index + 140);
+    return `${start > 0 ? '…' : ''}${content.slice(start, end).trim()}${end < content.length ? '…' : ''}`;
+};
+
 const reset = () => {
     currentElement = null;
     firstResult = null;
     lastResult = null;
     resList.innerHTML = '';
     sInput.value = '';
+    setStatus(hint);
+    syncUrl('');
     sInput.focus();
 };
 
@@ -65,43 +133,63 @@ const setActiveResult = (element) => {
     currentElement = element;
 };
 
-const renderResults = (results) => {
-    if (!Array.isArray(results) || results.length === 0) {
-        resList.innerHTML = '';
-        firstResult = lastResult = currentElement = null;
+const renderResults = (items, query) => {
+    resList.innerHTML = '';
+    currentElement = null;
+    firstResult = null;
+    lastResult = null;
+
+    if (!query) {
+        setStatus(hint);
         return;
     }
 
+    if (items.length === 0) {
+        setStatus(`Ничего не найдено по запросу «${query}»`);
+        return;
+    }
+
+    setStatus(`Найдено: ${items.length}`);
+
+    const terms = getTerms(query);
+    const pattern = terms.length ? new RegExp(`(${terms.map(escapeRegExp).join('|')})`, 'gi') : null;
     const fragment = document.createDocumentFragment();
 
-    for (const result of results) {
+    for (const item of items) {
         const li = document.createElement('li');
-        const titleText = document.createTextNode(result.item.title);
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.setAttribute('width', '24');
-        svg.setAttribute('height', '24');
-        svg.setAttribute('viewBox', '0 0 24 24');
-        svg.setAttribute('fill', 'none');
-        svg.setAttribute('stroke', 'currentColor');
-        svg.setAttribute('stroke-width', '2');
-        svg.setAttribute('stroke-linecap', 'round');
-        svg.setAttribute('stroke-linejoin', 'round');
-        svg.classList.add('feather', 'feather-chevrons-right');
+        const body = document.createElement('div');
+        body.className = 'result-body';
 
-        svg.innerHTML = '<polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline>';
+        if (item.path) {
+            const path = document.createElement('span');
+            path.className = 'result-path';
+            path.textContent = item.path;
+            body.appendChild(path);
+        }
+
+        const title = document.createElement('span');
+        title.className = 'result-title';
+        appendHighlighted(title, item.title, pattern);
+        body.appendChild(title);
+
+        const snippetText = buildSnippet(item, terms);
+        if (snippetText) {
+            const snippet = document.createElement('span');
+            snippet.className = 'result-snippet';
+            appendHighlighted(snippet, snippetText, pattern);
+            body.appendChild(snippet);
+        }
 
         const link = document.createElement('a');
         link.className = 'entry-link';
-        link.href = result.item.permalink;
-        link.setAttribute('aria-label', result.item.title);
+        link.href = item.permalink;
+        link.setAttribute('aria-label', item.title);
 
-        li.appendChild(titleText);
-        li.appendChild(svg);
+        li.appendChild(body);
         li.appendChild(link);
         fragment.appendChild(li);
     }
 
-    resList.innerHTML = '';
     resList.appendChild(fragment);
     firstResult = resList.firstElementChild;
     lastResult = resList.lastElementChild;
@@ -113,14 +201,16 @@ const performSearch = () => {
     }
 
     const query = sInput.value.trim();
+    syncUrl(query);
+
     if (!query) {
-        renderResults([]);
+        renderResults([], '');
         return;
     }
 
     const searchOptions = params.fuseOpts?.limit ? { limit: params.fuseOpts.limit } : undefined;
     const results = searchOptions ? fuse.search(query, searchOptions) : fuse.search(query);
-    renderResults(results);
+    renderResults(results.map((result) => result.item), query);
 };
 
 const initSearch = async () => {
@@ -130,6 +220,7 @@ const initSearch = async () => {
 
     sInput.disabled = false;
     sInput.focus();
+    setStatus(hint);
 
     try {
         const response = await fetch('../index.json');
@@ -143,6 +234,14 @@ const initSearch = async () => {
         }
     } catch (error) {
         console.error(error);
+        setStatus('Не удалось загрузить поисковый индекс');
+        return;
+    }
+
+    const initial = new URLSearchParams(window.location.search).get('q');
+    if (initial) {
+        sInput.value = initial.slice(0, 64);
+        performSearch();
     }
 };
 

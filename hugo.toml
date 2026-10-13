@@ -64,11 +64,11 @@ removePathAccents = true
 [params.fuseOpts]
   isCaseSensitive = false
   shouldSort = true
-  location = 0
-  distance = 1000
+  ignoreLocation = true
   threshold = 0.3
   minMatchCharLength = 2
-  keys = ['title', 'permalink', 'summary', 'content']
+  limit = 20
+  keys = [{ name = 'title', weight = 3 }, { name = 'description', weight = 2 }, { name = 'summary', weight = 1 }, { name = 'content', weight = 1 }]
 
 [menu]
   [[menu.main]]

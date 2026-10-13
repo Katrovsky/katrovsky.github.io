@@ -1,7 +1,11 @@
 {{- $.Scratch.Add "index" slice -}}
 {{- range site.RegularPages -}}
     {{- if and (not .Params.searchHidden) (ne .Layout `archives`) (ne .Layout `search`) }}
-    {{- $.Scratch.Add "index" (dict "title" .Title "content" .Plain "permalink" .Permalink "summary" .Summary) -}}
+    {{- $path := slice }}
+    {{- range .Ancestors.Reverse }}
+        {{- if not .IsHome }}{{ $path = $path | append .LinkTitle }}{{ end }}
+    {{- end }}
+    {{- $.Scratch.Add "index" (dict "title" .Title "description" .Description "path" (delimit $path " › ") "content" .Plain "permalink" .Permalink "summary" (.Summary | plainify)) -}}
     {{- end }}
 {{- end -}}
 {{- $.Scratch.Get "index" | jsonify -}}

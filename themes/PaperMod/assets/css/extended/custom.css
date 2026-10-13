@@ -365,3 +365,123 @@
 .entry-content {
     margin: 6px 0;
 }
+
+.searchbox input {
+    padding: 10px 14px;
+    font-size: 16px;
+    font-weight: 500;
+    background: var(--entry);
+    border: 1px solid var(--tertiary);
+}
+
+.searchbox input:focus {
+    outline: none;
+    border-color: var(--secondary);
+}
+
+.search-status {
+    min-height: 1.4em;
+    margin: 10px 2px 0;
+    font-size: 14px;
+    color: var(--secondary);
+}
+
+.searchResults {
+    margin: 12px 0;
+}
+
+.searchResults li {
+    display: block;
+    padding: 12px 16px;
+    font-weight: 400;
+}
+
+.result-body {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.result-path {
+    font-size: 12px;
+    color: var(--secondary);
+}
+
+.result-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.result-snippet {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--secondary);
+}
+
+mark {
+    color: inherit;
+    background: color-mix(in srgb, #d29922 38%, transparent);
+}
+
+.nf {
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.nf-code {
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--tertiary);
+}
+
+.nf-title {
+    margin: 12px 0 8px;
+    font-size: 26px;
+}
+
+.nf-text {
+    max-width: 440px;
+    margin: 0 auto 20px;
+    color: var(--secondary);
+}
+
+.nf-search {
+    display: flex;
+    gap: 8px;
+    max-width: 420px;
+    margin: 0 auto 14px;
+}
+
+.nf-search input {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 15px;
+    color: var(--primary);
+    background: var(--entry);
+    border: 1px solid var(--tertiary);
+    border-radius: var(--radius);
+}
+
+.nf-search button {
+    padding: 0 16px;
+    font-size: 14px;
+    color: var(--theme);
+    background: var(--primary);
+    border-radius: var(--radius);
+}
+
+.nf-home {
+    font-size: 14px;
+    color: var(--secondary);
+}
+
+.nf .list-heading {
+    margin-top: 36px;
+    text-align: left;
+}
+
+.nf .card-grid {
+    text-align: left;
+}
