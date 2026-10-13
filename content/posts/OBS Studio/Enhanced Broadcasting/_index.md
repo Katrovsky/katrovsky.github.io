@@ -1,6 +1,6 @@
 ---
-title: "Enchanced Broadcasting"
+title: "Enhanced Broadcasting"
 description: "Многодорожечное кодирование"
 hidemeta: true
 ---
-Пара слов об Enchanced Broadcasting
+Пара слов об Enhanced Broadcasting

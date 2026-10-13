@@ -1,6 +1,6 @@
 ---
 date: 2026-10-13T18:24:24.402Z
-title: Концепция Enchanced Broadcasting
+title: Концепция Enhanced Broadcasting
 draft: false
 slug: concept
 categories:
