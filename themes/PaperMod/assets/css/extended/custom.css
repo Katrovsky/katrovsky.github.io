@@ -496,3 +496,63 @@ mark {
     overflow-x: auto;
     overflow-y: hidden;
 }
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    .post-title {
+        font-size: 28px;
+    }
+
+    .post-description {
+        font-size: 15px;
+    }
+
+    .post-meta {
+        font-size: 13px;
+    }
+
+    .md-content h2 {
+        font-size: 22px;
+        margin-top: 28px;
+    }
+
+    .md-content h3 {
+        font-size: 18px;
+        margin-top: 22px;
+    }
+
+    .md-content h4 {
+        font-size: 16px;
+    }
+
+    details.toc {
+        font-size: 14px;
+    }
+
+    details.toc summary {
+        padding: 0.2rem 0.9rem;
+    }
+
+    .toc .inner {
+        padding: 2px 12px 10px 8px;
+    }
+
+    .toc .inner ul {
+        padding-inline-start: 18px;
+    }
+
+    .toc .inner li {
+        margin: 2px 0;
+    }
+
+    .docs-nav {
+        font-size: 14px;
+    }
+
+    .md-content pre code {
+        font-size: 12px;
+    }
+}
