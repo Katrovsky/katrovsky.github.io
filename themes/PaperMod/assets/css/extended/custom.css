@@ -5,6 +5,20 @@
     --gap: 20px;
 }
 
+@media screen and (min-width: 1280px) {
+    :root {
+        --main-width: 780px;
+        --nav-width: 780px;
+    }
+}
+
+@media screen and (min-width: 1700px) {
+    :root {
+        --main-width: 840px;
+        --nav-width: 840px;
+    }
+}
+
 .logo a {
     font-size: 20px;
 }
