@@ -5,7 +5,7 @@
 {{- /* Can be overwritten by partial with the same name in the global layouts. */ -}}
 {{- /* Head custom content area end */ -}}
 
-{{- if .Page.Store.Get "hasMath" }}
+{{- if or (.Page.Store.Get "hasMath") (findRE `class="katex` .Content 1) }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.47/dist/katex.min.css"
     integrity="sha384-nH0MfJ44wi1dd7w6jinlyBgljjS8EJAh2JBoRad8a3VDw2K69vfaaqm4WnR+gXtA" crossorigin="anonymous">
 {{- end }}
