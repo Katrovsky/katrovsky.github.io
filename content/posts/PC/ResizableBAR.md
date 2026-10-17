@@ -9,6 +9,7 @@ draft: false
 title: ReBAR/SAM
 description: Малоизвестная в широких кругах ResizableBAR
 slug: rebar-sam
+weight: 20
 ---
 ## Resizable BAR и Smart Access Memory: устройство и работа с видеопамятью
 
